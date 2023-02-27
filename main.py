@@ -57,7 +57,6 @@ class Configuration:
         self.sensors = sensors
 
 def create_vehicle(config):
-
     if config.model == "Elite":
         return Elite(config.sensors)
     elif config.model == "Classic":
@@ -66,9 +65,21 @@ def create_vehicle(config):
         return Paragon(config.sensors)
     elif config.model == "Gentry":
         return Gentry(config.sensors)
+    
+ def compare_vehicles(vehicle1, vehicle2):
+    if len(vehicle1.capabilities) > len(vehicle2.capabilities):
+        return vehicle1
+    elif len(vehicle1.capabilities) < len(vehicle2.capabilities):
+        return vehicle2
+    else:
+        return None
 
-config = Configuration("Elite", [Sensor.CAMERA, Sensor.RADAR])
-vehicle = create_vehicle(config)
-print(vehicle.name)
-print(vehicle.capabilities)
+config1 = Configuration("Elite", [Sensor.CAMERA, Sensor.RADAR])
+config2 = Configuration("Paragon", [Sensor.CAMERA])
+vehicle1 = create_vehicle(config1)
+vehicle2 = create_vehicle(config2)
+print(vehicle1.name)
+print(vehicle1.capabilities)
+best_vehicle = compare_vehicles(vehicle1, vehicle2)
+print(best_vehicle.name)
 

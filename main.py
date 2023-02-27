@@ -66,7 +66,7 @@ def create_vehicle(config):
     elif config.model == "Gentry":
         return Gentry(config.sensors)
     
- def compare_vehicles(vehicle1, vehicle2):
+def compare_vehicles(vehicle1, vehicle2):
     if len(vehicle1.capabilities) > len(vehicle2.capabilities):
         return vehicle1
     elif len(vehicle1.capabilities) < len(vehicle2.capabilities):

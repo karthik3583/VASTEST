@@ -69,4 +69,6 @@ def create_vehicle(config):
 
 config = Configuration("Elite", [Sensor.CAMERA, Sensor.RADAR])
 vehicle = create_vehicle(config)
+print(vehicle.name)
+print(vehicle.capabilities)
 
